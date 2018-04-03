@@ -1,0 +1,17 @@
+<h1> Index - All Listing </h1>
+<%= link_to 'Add Listing', new_listing_path %>
+
+<% @listings.each do |list| %>
+<p>
+	
+	Property Name:<%= list.property_name %> <br />
+	Room Type:<%= list.room_type %> <br />
+	Total Guest:<%= list.total_guest %> <br />
+	Country:<%= list.country %> <br /> 
+	<%= link_to 'Edit', edit_listing_path(list)%> <br />
+	<%= link_to 'Delete', list, method: :delete %>
+	<%= link_to 'Show', listing_path(list)%> <br />
+
+<% end %>
+
+

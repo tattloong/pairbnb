@@ -1,0 +1,7 @@
+<h1> hello </h1>
+	Property Name:<%= @listing.property_name %> <br />
+	Room Type:<%= @listing.room_type %> <br />
+	Total Guest:<%= @listing.total_guest %> <br />
+	Country:<%= @listing.country %> <br /> 
+	<%= link_to 'Edit', edit_listing_path(@listing)%> <br />
+	<%= link_to 'Delete', @listing, method: :delete %>

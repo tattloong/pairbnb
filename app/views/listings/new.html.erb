@@ -1,0 +1,19 @@
+<h1> New Listing </h1>
+
+<%= form_for @listing do |f| %>
+
+	<%= f.label "Property Name" %> <br />
+	<%= f.text_field :property_name %> <br />
+	<%= f.label "Room Type" %> <br />
+	<%= f.text_field :room_type %> <br />
+	<%= f.label "Total Guest"%> <br />
+	<%= f.text_field :total_guest %> <br />
+	<%= f.label "Country" %> <br />
+	<%= f.text_field :country %> <br />
+
+
+
+
+	<%= f.submit 'CREATE' %>
+
+	<% end %>
