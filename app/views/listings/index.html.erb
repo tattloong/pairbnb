@@ -11,7 +11,8 @@
 	<%= link_to 'Edit', edit_listing_path(list)%> <br />
 	<%= link_to 'Delete', list, method: :delete %>
 	<%= link_to 'Show', listing_path(list)%> <br />
-
+	
 <% end %>
 
+<%= will_paginate @listings %>
 
