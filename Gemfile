@@ -38,6 +38,7 @@ gem 'omniauth-facebook'
 gem 'faker','~>1.7','>=1.7.2'
 gem 'bootstrap', '~>4.0.0.alpha3'
 gem 'will_paginate', '~>3.1.0'
+gem 'carrierwave', '~> 0.11.2'
 
 
 # Use Capistrano for deployment

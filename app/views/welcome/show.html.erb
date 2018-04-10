@@ -1,3 +1,17 @@
 <h1> Welcome to Pairbnb </h1>
 
+
 <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+<br /> 
+
+<% @listings.sample(6).each do |list| %>
+	<p>
+	Property Name:<%= list.property_name %> <br />
+	Room Type:<%= list.room_type %> <br />
+	Total Guest:<%= list.total_guest %> <br />
+	Country:<%= list.country %> <br /> 
+	</p>
+<% end %>
+
+<%#= will_paginate @listings %>
+

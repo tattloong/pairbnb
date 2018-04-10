@@ -22,4 +22,5 @@ class User < ApplicationRecord
    x = self.authentications.find_by(provider: 'facebook')
    return x.token unless x.nil?
  end
+ has_many :listings
 end

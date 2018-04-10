@@ -1,7 +1,10 @@
 class ListingsController < ApplicationController
+before_action :check_user, except:[:show]
+before_action :check_admin, except:[:show]
 
 	def index
-		@listings = Listing.paginate(:page => params[:page], per_page: 4)
+		@listings = current_user.listings
+		@listings = current_user.listings.paginate(:page => params[:page], per_page: 4)
 	end
 
 	def show
@@ -13,7 +16,7 @@ class ListingsController < ApplicationController
 	end
 
 	def create
-		@listing = Listing.new(allowed_params)
+		@listing = current_user.listings.new(allowed_params)
 		@listing.save 
 		redirect_to listings_path
 	end
@@ -40,6 +43,20 @@ class ListingsController < ApplicationController
 
 		params.require(:listing).permit(:property_name, :room_type, :total_guest, :country)
 
+	end
+
+	def check_user
+		if signed_in?
+		else
+			redirect_to root_path
+		end
+	end
+
+		def check_admin
+		if current_user.role == 'admin'
+		else
+			redirect_to root_path
+		end
 	end
 
 
