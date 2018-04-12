@@ -5,7 +5,7 @@ class CreateListings < ActiveRecord::Migration[5.0]
     	t.string :property_name
     	t.string :room_type
     	t.string :total_guest
-    	
+      
 
       t.timestamps
     end

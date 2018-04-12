@@ -41,7 +41,7 @@ before_action :check_admin, except:[:show]
 	private
 	def allowed_params
 
-		params.require(:listing).permit(:property_name, :room_type, :total_guest, :country)
+		params.require(:listing).permit(:property_name, :room_type, :total_guest, :country, :image)
 
 	end
 
