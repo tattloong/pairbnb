@@ -3,6 +3,8 @@ class Listing < ApplicationRecord
 
 	mount_uploader :image, ImageUploader
 	has_many :reservations
-	has_many :users, :through => :reservations
+	has_many :booked_users, through: :reservations, source: :user
 
+
+	
 end

@@ -2,6 +2,15 @@
 <html>
   <head>
     <title>Pairbnb</title>
+
+<nav class="navbar navbar-light">
+     <form class="form-inline" action="/searchresult" method="get">
+       <input class="form-control mr-sm-2" type="search" placeholder="Search Country or Name" aria-label="Search" name="search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+     </form>
+   </nav>
+
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>

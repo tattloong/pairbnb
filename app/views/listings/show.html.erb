@@ -1,4 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Pairbnb </title>
+</head>
+
 <h1> Welcome </h1>
+
+<body>
 
 
 
@@ -18,49 +26,55 @@ NO PICTURE DISPLAY <br />
 	Room Type:<%= @listing.room_type %> <br />
 	Total Guest:<%= @listing.total_guest %> <br />
 	Country:<%= @listing.country %> <br /> 
+  Price:<%= @listing.price %> <br />
 	<%= link_to 'Edit', edit_listing_path(@listing)%> <br />
 	<%= link_to 'Delete', @listing, method: :delete %>
 	<br />
 
-	<div class="container">
-    <div class='col-md-5'>
-        <div class="form-group">
-            <div class='input-group date'>
-	Check-in
-                <input type='text' class="form-control" id='datetimepicker6'/>
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class='col-md-5'>
-        <div class="form-group">
-            <div class='input-group date'>
-    Check-out
-                <input type='text' class="form-control" id='datetimepicker7'/>
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker6').datetimepicker({
-        	format: "YYYY-MM-DD"
-        });
-        $('#datetimepicker7').datetimepicker({
-        	format: "YYYY-MM-DD",
-            useCurrent: false //Important! See issue #1075
-        });
-        $("#datetimepicker6").on("dp.change", function (e) {
-            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker7").on("dp.change", function (e) {
-            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-        });
-    });
-</script>
+
+       <!-- it is work -->
+     <%= form_for [@listing, Reservation.new] do |f| %>
+          <div class="booking-section1">
+              <div class="booking-section2" >
+                  <div class="booking-section3">
+                      <div class="booking-section3-content" style="position: relative;">
+                       <div>
+                           <label>Check-in Date</label>
+                          </div>
+                         <!-- <input type="text" name="" id="datetimepicker6"> -->
+                         <%= f.date_field :date_in, type: 'text', :id => "datetimepicker6", :placeholder => "YYYY-MM-DD", :required => true %>
+                      </div>
+
+                      <div class="booking-section3-content" style="position: relative;">
+                       <div>
+                          <label>Check-out Date</label>    
+                         </div>
+                         <!-- <input type="text" name="" id="datetimepicker7" > -->
+                         <%= f.date_field :date_out, type: 'text', :id => "datetimepicker7", :placeholder => "YYYY-MM-DD", :required => true %>
+                      </div>
+                          <%= f.submit "Book Now", :data => { :confirm => "Are you sure ?"}, :class => "btn btn-outline-danger" %>
+                          <%#= link_to "Make Payment", braintree_new_path %>
+                  </div>
+              </div>
+          </div>
+
+     <% end %>
+
+       <script type="text/javascript">
+   $(function () {
+     $('#datetimepicker6').datetimepicker({
+       format: "YYYY-MM-DD", useCurrent: true});
+     $('#datetimepicker7').datetimepicker({
+       format: "YYYY-MM-DD", useCurrent: false}); //Important! See issue #1075
+     $("#datetimepicker6").on("dp.change", function (e) {
+       $('#datetimepicker7').data("DateTimePicker").minDate(e.date);});
+     $("#datetimepicker7").on("dp.change", function (e) {
+       $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);});
+   });
+ </script>
+
+</body>
+</html>
+
+	
 

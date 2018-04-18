@@ -41,6 +41,7 @@ gem 'will_paginate', '~>3.1.0'
 gem 'carrierwave', '~> 0.11.2'
 gem 'momentjs-rails', '~> 2.17', '>= 2.17.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
+gem 'braintree'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
-before_action :check_user, except:[:show]
-before_action :check_admin, except:[:show]
+before_action :check_user, except:[:show, :searchresult]
+before_action :check_admin, except:[:show, :searchresult]
 
 	def index
 		@listings = current_user.listings
@@ -38,10 +38,18 @@ before_action :check_admin, except:[:show]
 		redirect_to listings_path
 	end
 
+	def searchresult
+        @listings = Listing.where('country ilike ?', "%" + params[:search] + "%")
+        @listings += Listing.where('property_name ilike ?', "%" + params[:search] + "%")
+        @listings.uniq!
+
+        # SELECT * FROM listings WHERE country LIKE "%params[:searchkey]%" AND name LIKE "%params[:searchkey]%"
+    end
+
 	private
 	def allowed_params
 
-		params.require(:listing).permit(:property_name, :room_type, :total_guest, :country, :image)
+		params.require(:listing).permit(:property_name, :room_type, :total_guest, :country, :image, :price)
 
 	end
 
